@@ -1,10 +1,10 @@
-package com.pluralsight.resourceserver;
+package com.main;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ResourceserverApplicationTests {
+class Dataservice1ApplicationTests {
 
 	@Test
 	void contextLoads() {
