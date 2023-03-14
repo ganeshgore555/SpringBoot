@@ -16,8 +16,7 @@ public class FastPassUIApplication {
 	@Bean
 	@LoadBalanced
 	public WebClient.Builder loadBalancedWebClientBuilder() {
-	return WebClient.builder();
+		return WebClient.builder();
 	}
-
 
 }
