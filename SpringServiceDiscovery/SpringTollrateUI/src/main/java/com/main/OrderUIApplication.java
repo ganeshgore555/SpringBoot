@@ -9,16 +9,16 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.*")
-public class FastPassUIApplication {
+public class OrderUIApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FastPassUIApplication.class, args);
+		SpringApplication.run(OrderUIApplication.class, args);
 	}
 
 	@Bean
-	@LoadBalanced
-	public WebClient.Builder loadBalancedWebClientBuilder() {
-		return WebClient.builder();
-	}
+    @LoadBalanced
+    public WebClient.Builder loadBalancedWebClientBuilder() {
+        return WebClient.builder();   
+    }
 
 }

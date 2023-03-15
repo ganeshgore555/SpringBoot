@@ -7,30 +7,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.model.FastPassCustomer;
+import com.model.Order;
 
 @Controller
-public class FastPassController {
+public class OrderController {
 
     @Autowired
     private WebClient.Builder webClientBuilder;
 
-
-    @RequestMapping(path="/customerdetails")
-	public String getFastPassCustomerDetails(@RequestParam(defaultValue = "800") String fastpassid, Model m) {
+    @RequestMapping("/order")
+	public String GetTollRate(@RequestParam(defaultValue = "1000") Integer orderId, Model m) {
 
         //WebClient client = WebClient.create();
 
-        FastPassCustomer customer = webClientBuilder.build().get()
-            .uri("http://fastPassService/fastpass?fastpassid=" + fastpassid)
+        Order order = webClientBuilder.build().get()
+            .uri("http://ORDERSERVICE/orderById/" + orderId)
             .retrieve()
-            .bodyToMono(FastPassCustomer.class)
+            .bodyToMono(Order.class)
             .block();
 		
-		System.out.println("fastpassid: " + fastpassid);
-		m.addAttribute("customer", customer);
-		return "console";
-
-    }
-    
+		System.out.println("orderId: " + orderId);
+		m.addAttribute("order", order);
+		return "dashboard";
+	}   
 }

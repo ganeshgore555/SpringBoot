@@ -6,10 +6,10 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.*")
-public class FastPassServiceApplication {
+public class OrderServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FastPassServiceApplication.class, args);
+		SpringApplication.run(OrderServiceApplication.class, args);
 	}
 
 }

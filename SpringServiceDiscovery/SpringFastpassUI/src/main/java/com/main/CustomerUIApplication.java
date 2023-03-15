@@ -9,16 +9,16 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.*")
-public class TollRateUIApplication {
+public class CustomerUIApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TollRateUIApplication.class, args);
+		SpringApplication.run(CustomerUIApplication.class, args);
 	}
 
 	@Bean
-    @LoadBalanced
-    public WebClient.Builder loadBalancedWebClientBuilder() {
-        return WebClient.builder();   
-    }
+	@LoadBalanced
+	public WebClient.Builder loadBalancedWebClientBuilder() {
+		return WebClient.builder();
+	}
 
 }

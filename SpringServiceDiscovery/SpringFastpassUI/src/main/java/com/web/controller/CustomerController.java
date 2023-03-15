@@ -7,28 +7,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.model.TollRate;
+import com.model.Customer;
 
 @Controller
-public class DashboardController {
+public class CustomerController {
 
     @Autowired
     private WebClient.Builder webClientBuilder;
 
-    @RequestMapping("/dashboard")
-	public String GetTollRate(@RequestParam(defaultValue = "1000") Integer stationId, Model m) {
+
+    @RequestMapping(path="/customerdetails")
+	public String getCustomerDetails(@RequestParam(defaultValue = "500") String customerId, Model m) {
 
         //WebClient client = WebClient.create();
 
-        TollRate rate = webClientBuilder.build().get()
-            .uri("http://tollRateService/tollrate/" + stationId)
+        Customer customer = webClientBuilder.build().get()
+            .uri("http://CUSTOMERSERVICE/customer?customerId=" + customerId)
             .retrieve()
-            .bodyToMono(TollRate.class)
+            .bodyToMono(Customer.class)
             .block();
 		
-		System.out.println("stationId: " + stationId);
-		m.addAttribute("rate", rate);
-		return "dashboard";
-	}
+		System.out.println("customerId: " + customerId);
+		m.addAttribute("customer", customer);
+		return "console";
+
+    }
     
 }
