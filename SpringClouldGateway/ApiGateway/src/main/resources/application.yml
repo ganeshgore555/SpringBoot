@@ -1,0 +1,36 @@
+server:
+    port: 8050
+eureka:
+    instance:
+        hostname: localhost
+    client:
+        serviceUrl:
+           defaultZone: http://localhost:8761/eureka/
+        register-with-eureka: false
+        fetch-registry: true
+                    
+spring:
+    application:
+        name: api-gateway
+    cloud:
+        gateway:
+            discovery:
+                locator:
+                    enabled: true
+            routes:
+            - id: order-service-v1
+              uri: lb://orderService
+              predicates:
+              - Path=/v1/orderById/{orderId}
+              filters:
+              - SetPath=/orderById/{orderId}
+              - AddResponseHeader=X-Expiring-Service, please use v2
+            - id: order-service-v2
+              uri: lb://orderService
+              predicates:
+              - Path=/v2/orderById/{orderId}
+              filters:
+              - SetPath=/bulkOrderById/{orderId}
+              
+              
+              

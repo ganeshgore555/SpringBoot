@@ -28,4 +28,12 @@ public class CustomerController {
         System.out.println("Customer retrieved for " + customerId);
         return customers.stream().filter(customer -> customerId.equals(customer.getCustomerId())).findAny().orElse(new Customer());
     }
+    
+    
+    @RequestMapping(path="/customerSlow", params={"customerId"})
+    public Customer getCustomerByIdSlow(@RequestParam String customerId) throws InterruptedException {
+        System.out.println("Customer retrieved with delay for " + customerId);
+        Thread.sleep(3000);
+        return customers.stream().filter(customer -> customerId.equals(customer.getCustomerId())).findAny().orElse(new Customer());
+    }
 }
