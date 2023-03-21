@@ -9,12 +9,13 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com</groupId>
-	<artifactId>SpringTollRateService</artifactId>
+	<artifactId>SpringCustomerService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringTollRateService</name>
-	<description>SpringTollRateService</description>
+	<name>SpringCustomerService</name>
+	<description>SpringCustomerService</description>
 	<properties>
 		<java.version>19</java.version>
+		<spring-cloud.version>2022.0.1</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -46,24 +47,23 @@
 			</plugin>
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-		<id>spring-milestones</id>
-		<name>Spring Milestones</name>
-		<url>https://repo.spring.io/milestone</url>
-		<snapshots>
-			<enabled>false</enabled>
-		</snapshots>
-		</repository>
-	</repositories>
-
+	  <repositories>
+			<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			</repository>
+		</repositories>
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>2022.0.1</version>
+				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
