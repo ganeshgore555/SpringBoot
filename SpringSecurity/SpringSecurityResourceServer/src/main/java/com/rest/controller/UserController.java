@@ -22,7 +22,7 @@ public class UserController {
     	userList.add(new User("Mark",58,"US"));
     	userList.add(new User("Pablo",45,"Columbia"));
     }
-
+    
     @RequestMapping("/api/getUserData")
     public List<User> getUserData() {
         return userList;
